@@ -44,7 +44,15 @@ services:
     depends_on:
       - elasticsearch
 
-networks:
+  node-red:
+    build: node-red/
+    ports:
+     - "1880:1880"
+    networks:
+     - elk
+    volumes:
+     - ./node-red:/root/.node-red
 
+networks:
   elk:
     driver: bridge
